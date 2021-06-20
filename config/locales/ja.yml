@@ -1,0 +1,12 @@
+ja:
+  enums:
+    reservation:
+      states:
+        retention: 保留
+        decision: 確定
+        rejection: 却下
+
+        description_of_work:
+          types: 
+            construction: 組立
+            dismantlement: 解体

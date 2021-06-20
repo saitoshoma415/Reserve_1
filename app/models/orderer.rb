@@ -1,0 +1,2 @@
+class Orderer < ApplicationRecord
+end
