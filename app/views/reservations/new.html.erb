@@ -1,24 +1,25 @@
-<%= form_for @reservation do |f| %>
-  <p>
-  <%= f.label :description_of_work_id %>
-  <%= f.text_field :description_of_work_id %>
-  </p>
- 
-  <p>
-  <%= f.label :orderer_id %>
-  <%= f.text_field :orderer_id %>
-  </p>
- 
-  <p>
-  <%= f.label :contractor_id %>
-  <%= f.text_field :contractor_id %>
-  </p>
+<h1>新規予約ページです</h1>
 
-  <p>
-  <%= f.label :states %>
-  <%= f.text_field :states %>
-  </p>
-  
-  <%= f.submit %>
- 
+<%= form_for @reservation do |f| %>
+<%= f.label :description_of_work_id,'施工内容id' %>
+ <%= f.text_field :description_of_work_id %><br/>
+<%= f.label :orderer_id,'発注者id' %>
+ <%= f.text_field :orderer_id %><br/>
+ <%= f.label :contractor_id,'請負者id' %>
+ <%= f.text_field :contractor_id %><br/>
+<%= f.fields_for :description_of_work do |d| %>
+<%= d.label :types,'タイプ' %>
+<%= d.select :types, DescriptionOfWork.types.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %><br/>
+<%= d.label :floors,'階数' %>
+<%= d.select :floors, DescriptionOfWork.floors.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %><br/>
+<%= d.label :buildings,'建物' %>
+<%= d.select :buildings, DescriptionOfWork.buildings.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %><br/>
+<%= d.label :modes,'方法' %>
+<%= d.select :modes, DescriptionOfWork.modes.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %><br/>
+<%= d.label :formation_levels,'施工面' %>
+<%= d.select :formation_levels, DescriptionOfWork.formation_levels.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %><br/>
+<%= d.label :work_times, '施工時間'%>
+<%= d.select :work_times, DescriptionOfWork.work_times.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+<% end %><br/>
+ <%= f.submit '予約する' %>
 <% end %>

@@ -1,21 +1,28 @@
 Rails.application.routes.draw do
-  get 'home/top'
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
+ 
+  root 'reservations#home'
+  get 'reservations/index' 
+  get 'reservations/home' 
+  get 'reservations/new' 
+  post 'reservations' => 'reservations#create'
+  get 'statics/top'
+  
 
-  devise_scope :user do
-    get 'user/:id', to: 'users/registrations#detail'
+
+  resources :users, only: [:show]
+  
+  
+
+   devise_scope :user do
     get 'signup', to: 'users/registrations#new'
     get 'login', to: 'users/sessions#new'
     get 'logout', to: 'users/sessions#destroy'
+    get 'edit', to: 'users/registrations#edit'
   end
-  get 'description_of_work/test'
-  get 'reservation/test'
-  get 'reservatione/test'
-  get 'reservations/index'
-  get 'reservations/new'
-  get 'top/index'
+   get 'description_of_work/test'
+  
+  
+  
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

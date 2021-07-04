@@ -10,42 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_052711) do
-
-  create_table "contractors", force: :cascade do |t|
-    t.string "company_name"
-    t.string "contact_person"
-    t.string "email_"
-    t.string "address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "description_of_work", force: :cascade do |t|
-    t.integer "types", limit: 1, default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2021_06_20_143948) do
 
   create_table "description_of_works", force: :cascade do |t|
     t.date "commencement_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "orderers", force: :cascade do |t|
-    t.string "company_name"
-    t.string "contact_"
-    t.string "person"
-    t.string "email_address"
+    t.integer "types", limit: 1, default: 0, null: false
+    t.integer "floors", limit: 1, default: 0, null: false
+    t.integer "buildings", limit: 1, default: 0, null: false
+    t.integer "modes", limit: 1, default: 0, null: false
+    t.integer "formation_level", limit: 1, default: 0, null: false
+    t.integer "work_time", limit: 1, default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.string "description_of_work_id"
-    t.string "orderer_id"
-    t.string "contractor_id"
+    t.integer "description_of_work_id"
+    t.integer "orderer_id"
+    t.integer "contractor_id"
     t.integer "states", limit: 1, default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -59,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_052711) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

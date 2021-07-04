@@ -1,4 +1,5 @@
 class DescriptionOfWork < ApplicationRecord
+  belongs_to :reservation
   enum types: { construction: 0, dismantlement: 1 }
   # construction=組立,dismantlement=解体
   enum floors: { second_floor: 0, third_floor: 1 }
@@ -9,6 +10,6 @@ class DescriptionOfWork < ApplicationRecord
   # new_construction=新築、repair=改修
   enum formation_levels: { side: 0, one_side: 1, two_sides: 2, three_sides: 3, four_sides: 4 }
   # side=面、one_side=一面、two_sides=2面、three_sides、=3面、four_sides=4面,
-  enum work_times: { forenoon: 0, 、afternoon: 1 }
+  enum work_times: { forenoon: 0, afternoon: 1 }
   # forenoon=午前、、afternoon=午後
 end
