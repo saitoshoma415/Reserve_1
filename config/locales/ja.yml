@@ -6,7 +6,15 @@ ja:
         decision: 確定
         rejection: 却下
 
-        description_of_work:
-          types: 
-            construction: 組立
-            dismantlement: 解体
+  description_of_work:
+    types: 
+      construction: 組立
+      dismantlement: 解体
+
+  activerecord:
+      attributes:
+        user:
+          name: "お名前"
+          password: "パスワード"
+          password_confirmation: "パスワード確認"
+          email: "メールアドレス"
